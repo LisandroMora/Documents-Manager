@@ -1,0 +1,11 @@
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\CapaEntidades.dll.config
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\CapaEntidades.dll
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\CapaEntidades.pdb
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\EntityFramework.dll
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\EntityFramework.xml
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\obj\Debug\CapaEntidades.csproj.CopyComplete
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\obj\Debug\CapaEntidades.dll
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaEntidades\obj\Debug\CapaEntidades.pdb
