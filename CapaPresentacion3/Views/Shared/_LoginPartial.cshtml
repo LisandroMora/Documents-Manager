@@ -5,8 +5,8 @@
     {
     @Html.AntiForgeryToken()
    
-        @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>
+        @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "text-decoration-none mx-3" })
+        <a class="mx-3 text-decoration-none" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>
     }
 }
 else
