@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CapaEntidades.Departamentos>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdDepartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Siglas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdDepartamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Siglas)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdDepartamento, nombre=item.Nombre, siglas=item.Siglas }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdDepartamento })
+        </td>
+    </tr>
+}
+
+</table>

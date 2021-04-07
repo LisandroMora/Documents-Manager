@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @*<nav class="navbar navbar-expand-lg mb-5" style="background-color:black">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav Links">
+                    <ul>
+                        <li class="nav-item">@Html.ActionLink("Usuarios", "Inicio", "Usuarios", new { area = "" }, new { @class = "navbar-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Departamentos", "Inicio", "Departamentos", new { area = "" }, new { @class = "navbar-link" })</li>
+                    </ul>
+                    <ul class="mr-0">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
+    <nav class="navbar navbar-expand-lg navbar-dark text-light p-2 mb-3 Links" style="background-color:black">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @Html.ActionLink("DOCS APP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand mx-3" })
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100">
+                <li class="nav-item">
+                    <a href="/Usuarios/Inicio" class="nav-link">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Departamentos/Inicio" class="nav-link">Departamentos</a>
+                </li>
+                <li class="nav-item log w-100 mt-2">
+                    @Html.Partial("_LoginPartial")
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
