@@ -1,11 +1,21 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Inicio";
 }
 
 <h1 class="text-center h1 m-5">Menu de Usuarios</h1>
-<div class="w-50 mx-auto">
-    <a class="btn btn-block btn-success" href="/Usuarios/Create">Crear Usuario</a>
-    <a class="btn btn-block btn-info" href="/Usuarios/Lista">Lista de Usuario</a>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm">
+            <a class="btn" href="/Usuarios/Create">
+                <img src="~/Images/CUser.png" class="w-75 shadow-lg rounded-circle" alt="..." />
+                <p class="h2 mt-4">Crear Usuario</p>
+            </a>
+        </div>
+        <div class="col-sm">
+            <a class="btn" href="/Usuarios/Lista">
+                <img src="~/Images/ListUser.png" class="w-75 bg-danger rounded-circle p-2 shadow-lg" alt="..." />
+                <p class="h2 mt-4">Lista de Usuarios</p>
+            </a>
+        </div>
+    </div>
 </div>
-

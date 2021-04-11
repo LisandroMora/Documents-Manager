@@ -13,6 +13,7 @@ namespace CapaPresentacion.Controllers
     {
         // GET: Usuarios
         UsuarioNegocio UserNegocio = new UsuarioNegocio();
+        DepartamentosNegocio departamentos = new DepartamentosNegocio();
         public ActionResult Inicio()
         {
             return View();
@@ -27,6 +28,18 @@ namespace CapaPresentacion.Controllers
         // GET: Usuarios/Create
         public ActionResult Create()
         {
+            List<SelectListItem> ListaDept = departamentos.MostrarDepartamentos().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.IdDepartamento.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.items = ListaDept;
+
             return View();
         }
 
@@ -42,6 +55,16 @@ namespace CapaPresentacion.Controllers
         // GET: Usuarios/Edit/5
         public ActionResult Edit()
         {
+            List<SelectListItem> ListaDept = departamentos.MostrarDepartamentos().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.IdDepartamento.ToString(),
+                    Selected = false
+                };
+            });
+            ViewBag.items = ListaDept;
             return View();
         }
 
