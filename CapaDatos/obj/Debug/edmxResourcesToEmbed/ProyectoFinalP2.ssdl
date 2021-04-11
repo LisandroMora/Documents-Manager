@@ -8,13 +8,17 @@
     <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Siglas" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <EntityType Name="Login">
+  <EntityType Name="EnvioDocumento">
     <Key>
-      <PropertyRef Name="IdUser" />
+      <PropertyRef Name="IdEnvio" />
     </Key>
-    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Email" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="Password" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="IdEnvio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoDocumento" Type="varchar" MaxLength="30" />
+    <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DeptOrigen" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DeptDestino" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Secuencia" Type="varchar" MaxLength="30" />
+    <Property Name="Fecha" Type="date" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
@@ -42,7 +46,7 @@
   </Association>
   <EntityContainer Name="ProyectoFinalP2ModelStoreContainer">
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnvioDocumento" EntityType="Self.EnvioDocumento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="Self.fk_Departamentos_IdDepartamentos">
       <End Role="Departamentos" EntitySet="Departamentos" />

@@ -9,14 +9,6 @@
     <Property Name="Siglas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Usuarios" Relationship="Self.fk_Departamentos_IdDepartamentos" FromRole="Departamentos" ToRole="Usuarios" />
   </EntityType>
-  <EntityType Name="Login">
-    <Key>
-      <PropertyRef Name="IdUser" />
-    </Key>
-    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="IdUsuario" />
@@ -44,11 +36,23 @@
   </Association>
   <EntityContainer Name="ProyectoFinalP2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
-    <EntitySet Name="Login" EntityType="Self.Login" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
     <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="Self.fk_Departamentos_IdDepartamentos">
       <End Role="Departamentos" EntitySet="Departamentos" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
+    <EntitySet Name="EnvioDocumento" EntityType="ProyectoFinalP2Model.EnvioDocumento" />
   </EntityContainer>
+  <EntityType Name="EnvioDocumento">
+    <Key>
+      <PropertyRef Name="IdEnvio" />
+    </Key>
+    <Property Name="IdEnvio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DeptOrigen" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DeptDestino" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Secuencia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

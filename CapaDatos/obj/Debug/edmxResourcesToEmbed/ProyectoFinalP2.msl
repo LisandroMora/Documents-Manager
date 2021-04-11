@@ -10,15 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Login">
-      <EntityTypeMapping TypeName="ProyectoFinalP2Model.Login">
-        <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="ProyectoFinalP2Model.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
@@ -27,6 +18,19 @@
           <ScalarProperty Name="Correo" ColumnName="Correo" />
           <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
           <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnvioDocumento">
+      <EntityTypeMapping TypeName="ProyectoFinalP2Model.EnvioDocumento">
+        <MappingFragment StoreEntitySet="EnvioDocumento">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+          <ScalarProperty Name="DeptDestino" ColumnName="DeptDestino" />
+          <ScalarProperty Name="DeptOrigen" ColumnName="DeptOrigen" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

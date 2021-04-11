@@ -14,7 +14,6 @@ namespace CapaDatos
     using System.Data.Entity.Infrastructure;
     using CapaEntidades;
     
-    
     public partial class ProyectoFinalP2Entities : DbContext
     {
         public ProyectoFinalP2Entities()
@@ -28,7 +27,7 @@ namespace CapaDatos
         }
     
         public virtual DbSet<Departamentos> Departamentos { get; set; }
-        public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<EnvioDocumento> EnvioDocumento { get; set; }
     }
 }
