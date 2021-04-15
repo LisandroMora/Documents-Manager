@@ -4,11 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="51db4be7df1a46088359845ccea843de" Name="Diagram1">
+      <Diagram DiagramId="51db4be7df1a46088359845ccea843de" Name="Diagram1" ZoomLevel="69">
         <EntityTypeShape EntityType="ProyectoFinalP2Model.Departamentos" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoFinalP2Model.Usuarios" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProyectoFinalP2Model.EnvioDocumento" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ProyectoFinalP2Model.EnvioDocumento" Width="1.5" PointX="5.75" PointY="0.625" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

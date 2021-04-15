@@ -47,13 +47,13 @@ namespace CapaPresentacion.Controllers
         [HttpPost]
         public ActionResult Create(Usuarios usuario)
         {
-                UserNegocio.NuevoUsuario(usuario);
+            UserNegocio.NuevoUsuario(usuario);
 
-                return RedirectToAction("Inicio");
+            return RedirectToAction("Inicio");
         }
 
         // GET: Usuarios/Edit/5
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
             List<SelectListItem> ListaDept = departamentos.MostrarDepartamentos().ConvertAll(d =>
             {
@@ -65,7 +65,7 @@ namespace CapaPresentacion.Controllers
                 };
             });
             ViewBag.items = ListaDept;
-            return View();
+            return View(UsuarioNegocio.GetUsuarios(id));
         }
 
         // POST: Usuarios/Edit/5
@@ -77,18 +77,18 @@ namespace CapaPresentacion.Controllers
         }
 
         // GET: Usuarios/Delete/5
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
-            return View();
+            return View(UsuarioNegocio.GetUsuarios(id));
         }
 
         // POST: Usuarios/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Usuarios usuario)
         {
             try
             {
-                UserNegocio.Eliminar(id);
+                UserNegocio.Eliminar(usuario);
 
                 return RedirectToAction("Inicio");
             }

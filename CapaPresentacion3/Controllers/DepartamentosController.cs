@@ -47,9 +47,9 @@ namespace CapaPresentacion.Controllers
         }
 
         // GET: Departamentos/Edit/5
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            return View(DepartamentosNegocio.GetDepartamentos(id));
         }
 
         // POST: Departamentos/Edit/5
@@ -69,25 +69,18 @@ namespace CapaPresentacion.Controllers
         }
 
         // GET: Departamentos/Delete/5
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
-            return View();
+            return View(DepartamentosNegocio.GetDepartamentos(id));
         }
 
         // POST: Departamentos/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Departamentos departamento)
         {
-            try
-            {
-                DepNegocio.EliminarDepartamento(id);
+            DepNegocio.EliminarDepartamento(departamento);
 
-                return RedirectToAction("Inicio");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Inicio");
         }
     }
 }

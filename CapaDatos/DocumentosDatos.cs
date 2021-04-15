@@ -20,5 +20,18 @@ namespace CapaDatos
         {
             return DB.EnvioDocumento.ToList();
         }
+        public int LastID()
+        {
+            int id;
+            if (DB.EnvioDocumento.Count() != 0)
+            {
+                 id = DB.EnvioDocumento.Select(x=>x.IdEnvio).Max();
+            }
+            else
+            {
+                id = 0;
+            }
+            return id;
+        }
     }
 }

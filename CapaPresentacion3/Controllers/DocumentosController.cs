@@ -8,9 +8,13 @@ using CapaNegocio;
 
 namespace CapaPresentacion3.Controllers
 {
+    [Authorize]
     public class DocumentosController : Controller
     {
         DocumentosNegocio negocio = new DocumentosNegocio();
+        UsuarioNegocio UserNegocio = new UsuarioNegocio();
+        DepartamentosNegocio departamentos = new DepartamentosNegocio();
+
         // GET: Documentos
         public ActionResult InicioDocumentos()
         {
@@ -26,6 +30,28 @@ namespace CapaPresentacion3.Controllers
         // GET: Documentos/Create
         public ActionResult Create()
         {
+            List<SelectListItem> ListaUsuarios = UserNegocio.MostrarUsuario().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.IdUsuario.ToString(),
+                    Selected = false
+                };
+            });
+            List<SelectListItem> ListaDept = departamentos.MostrarDepartamentos().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.IdDepartamento.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.items2 = ListaDept;
+
+            ViewBag.items = ListaUsuarios;
             return View();
         }
 

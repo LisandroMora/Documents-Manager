@@ -18,6 +18,8 @@ namespace CapaEntidades
         public Departamentos()
         {
             this.Usuarios = new HashSet<Usuarios>();
+            this.EnvioDocumento = new HashSet<EnvioDocumento>();
+            this.EnvioDocumento1 = new HashSet<EnvioDocumento>();
         }
     
         public int IdDepartamento { get; set; }
@@ -26,5 +28,9 @@ namespace CapaEntidades
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnvioDocumento> EnvioDocumento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnvioDocumento> EnvioDocumento1 { get; set; }
     }
 }

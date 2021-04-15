@@ -26,9 +26,9 @@
         <MappingFragment StoreEntitySet="EnvioDocumento">
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
-          <ScalarProperty Name="DeptDestino" ColumnName="DeptDestino" />
-          <ScalarProperty Name="DeptOrigen" ColumnName="DeptOrigen" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
           <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
         </MappingFragment>

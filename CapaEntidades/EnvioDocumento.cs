@@ -16,10 +16,14 @@ namespace CapaEntidades
     {
         public int IdEnvio { get; set; }
         public string TipoDocumento { get; set; }
-        public string Usuario { get; set; }
-        public string DeptOrigen { get; set; }
-        public string DeptDestino { get; set; }
+        public int IdUsuario { get; set; }
+        public int IdDeptOrigen { get; set; }
+        public int IdDeptDestino { get; set; }
         public string Secuencia { get; set; }
         public DateTime Fecha { get; set; }
+    
+        public virtual Departamentos Departamentos { get; set; }
+        public virtual Departamentos Departamentos1 { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

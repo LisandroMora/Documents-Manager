@@ -54,9 +54,6 @@
     <Compile Include="EnvioDocumento.cs">
       <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProyectoFinalP2.cs">
       <AutoGen>True</AutoGen>

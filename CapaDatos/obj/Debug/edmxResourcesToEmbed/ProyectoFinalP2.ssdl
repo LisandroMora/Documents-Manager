@@ -14,9 +14,9 @@
     </Key>
     <Property Name="IdEnvio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TipoDocumento" Type="varchar" MaxLength="30" />
-    <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="DeptOrigen" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="DeptDestino" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdDeptOrigen" Type="int" Nullable="false" />
+    <Property Name="IdDeptDestino" Type="int" Nullable="false" />
     <Property Name="Secuencia" Type="varchar" MaxLength="30" />
     <Property Name="Fecha" Type="date" />
   </EntityType>
@@ -44,6 +44,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_EnvioDocumento_IdDeptDestino">
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+    <End Role="EnvioDocumento" Type="Self.EnvioDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="EnvioDocumento">
+        <PropertyRef Name="IdDeptDestino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EnvioDocumento_IdDeptOrigen">
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+    <End Role="EnvioDocumento" Type="Self.EnvioDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="EnvioDocumento">
+        <PropertyRef Name="IdDeptOrigen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EnvioDocumento_IdUsuario">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="EnvioDocumento" Type="Self.EnvioDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="EnvioDocumento">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ProyectoFinalP2ModelStoreContainer">
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EnvioDocumento" EntityType="Self.EnvioDocumento" Schema="dbo" store:Type="Tables" />
@@ -51,6 +87,18 @@
     <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="Self.fk_Departamentos_IdDepartamentos">
       <End Role="Departamentos" EntitySet="Departamentos" />
       <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EnvioDocumento_IdDeptDestino" Association="Self.fk_EnvioDocumento_IdDeptDestino">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EnvioDocumento_IdDeptOrigen" Association="Self.fk_EnvioDocumento_IdDeptOrigen">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EnvioDocumento_IdUsuario" Association="Self.fk_EnvioDocumento_IdUsuario">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

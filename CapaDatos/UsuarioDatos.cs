@@ -9,7 +9,7 @@ namespace CapaDatos
 {
     public class UsuarioDatos
     {
-        ProyectoFinalP2Entities DB = new ProyectoFinalP2Entities();
+        static ProyectoFinalP2Entities DB = new ProyectoFinalP2Entities();
         
         public void NuevoUsuario(Usuarios usuario)
         {
@@ -32,11 +32,16 @@ namespace CapaDatos
             DB.SaveChanges();
         }
 
-        public void Eliminar(int id)
+        public void Eliminar(Usuarios usuario)
         {
-            var registro = DB.Usuarios.Where(a => a.IdUsuario == id).FirstOrDefault();
+            var registro = DB.Usuarios.Where(a => a.IdUsuario == usuario.IdUsuario).FirstOrDefault();
             DB.Usuarios.Remove(registro);
             DB.SaveChanges();
+        }
+
+        public static Usuarios GetUsuarios(int id)
+        {
+            return DB.Usuarios.Where(a => a.IdUsuario == id).FirstOrDefault();
         }
     }
 }

@@ -18,13 +18,13 @@
             @Html.DisplayNameFor(model => model.TipoDocumento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario)
+            @Html.DisplayNameFor(model => model.IdUsuario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeptOrigen)
+            @Html.DisplayNameFor(model => model.IdDeptOrigen)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeptDestino)
+            @Html.DisplayNameFor(model => model.IdDeptDestino)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Secuencia)
@@ -44,13 +44,13 @@
             @Html.DisplayFor(modelItem => item.TipoDocumento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario)
+            @Html.DisplayFor(modelItem => item.Usuarios.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DeptOrigen)
+            @Html.DisplayFor(modelItem => item.Departamentos1.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DeptDestino)
+            @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Secuencia)

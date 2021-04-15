@@ -26,9 +26,13 @@ namespace CapaNegocio
             datos.EditarDepartamento(id, nombre, siglas);
         }
 
-        public void EliminarDepartamento(int id)
+        public void EliminarDepartamento(Departamentos departamento)
         {
-            datos.EliminarDepartamento(id);
+            datos.EliminarDepartamento(departamento);
+        }
+        public static Departamentos GetDepartamentos(int ID)
+        {
+            return DepartamentoDatos.GetDepartamentos(ID);
         }
     }
 }

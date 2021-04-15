@@ -14,6 +14,12 @@ namespace CapaEntidades
     
     public partial class Usuarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Usuarios()
+        {
+            this.EnvioDocumento = new HashSet<EnvioDocumento>();
+        }
+    
         public int IdUsuario { get; set; }
         public string Nombre { get; set; }
         public string Correo { get; set; }
@@ -21,5 +27,7 @@ namespace CapaEntidades
         public string Cargo { get; set; }
     
         public virtual Departamentos Departamentos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnvioDocumento> EnvioDocumento { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace CapaDatos
 {
     public class DepartamentoDatos
     {
-        ProyectoFinalP2Entities DB = new ProyectoFinalP2Entities();
+        static ProyectoFinalP2Entities DB = new ProyectoFinalP2Entities();
 
         public void NuevoDepartamento(Departamentos depart)
         {
@@ -30,11 +30,16 @@ namespace CapaDatos
             DB.SaveChanges();
         }
 
-        public void EliminarDepartamento(int id)
+        public void EliminarDepartamento(Departamentos departamento)
         {
-            var registro = DB.Departamentos.Where(a => a.IdDepartamento == id).FirstOrDefault();
+            var registro = DB.Departamentos.Where(a => a.IdDepartamento == departamento.IdDepartamento).FirstOrDefault();
             DB.Departamentos.Remove(registro);
             DB.SaveChanges();
+        }
+
+        public static Departamentos GetDepartamentos(int ID)
+        {
+            return DB.Departamentos.Where(a => a.IdDepartamento == ID).FirstOrDefault();
         }
     }
 }
