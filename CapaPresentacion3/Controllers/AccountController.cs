@@ -151,7 +151,7 @@ namespace CapaPresentacion3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Nombre = model.Nombre, Cargo = model.Cargo, IdDepartamento = model.IdDepartamento };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Nombre = model.Nombre, Cargo = model.Cargo, IdDepartamento = model.IdDepartamento };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

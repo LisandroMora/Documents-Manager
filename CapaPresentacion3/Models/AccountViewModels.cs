@@ -69,6 +69,10 @@ namespace CapaPresentacion3.Models
         public string Nombre { get; set; }
 
         [Required]
+        [Display(Name = "Nombre de Usuario")]
+        public string UserName { get; set; }
+        
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
