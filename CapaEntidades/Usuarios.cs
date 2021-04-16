@@ -25,6 +25,7 @@ namespace CapaEntidades
         public string Correo { get; set; }
         public int IdDepartamento { get; set; }
         public string Cargo { get; set; }
+        public string IdCuenta { get; set; }
     
         public virtual Departamentos Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

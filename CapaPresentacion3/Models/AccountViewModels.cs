@@ -65,9 +65,21 @@ namespace CapaPresentacion3.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Departamento")]
+        public int IdDepartamento { get; set; }
+
+        [Required]
+        [Display(Name = "Cargo")]
+        public string Cargo { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

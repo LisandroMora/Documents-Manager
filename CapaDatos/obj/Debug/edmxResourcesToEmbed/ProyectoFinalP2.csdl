@@ -1,50 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ProyectoFinalP2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Departamentos">
-    <Key>
-      <PropertyRef Name="IdDepartamento" />
-    </Key>
-    <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Siglas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.fk_Departamentos_IdDepartamentos" FromRole="Departamentos" ToRole="Usuarios" />
-    <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" FromRole="Departamentos" ToRole="EnvioDocumento" />
-    <NavigationProperty Name="EnvioDocumento1" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" FromRole="Departamentos" ToRole="EnvioDocumento" />
-  </EntityType>
-  <EntityType Name="Usuarios">
-    <Key>
-      <PropertyRef Name="IdUsuario" />
-    </Key>
-    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
-    <Property Name="Cargo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Departamentos" Relationship="Self.fk_Departamentos_IdDepartamentos" FromRole="Usuarios" ToRole="Departamentos" />
-    <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" FromRole="Usuarios" ToRole="EnvioDocumento" />
-  </EntityType>
-  <Association Name="fk_Departamentos_IdDepartamentos">
-    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Departamentos">
-        <PropertyRef Name="IdDepartamento" />
-      </Principal>
-      <Dependent Role="Usuarios">
-        <PropertyRef Name="IdDepartamento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ProyectoFinalP2Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-    <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="Self.fk_Departamentos_IdDepartamentos">
+    <EntitySet Name="Departamentos" EntityType="ProyectoFinalP2Model.Departamentos" />
+    <EntitySet Name="EnvioDocumento" EntityType="ProyectoFinalP2Model.EnvioDocumento" />
+    <EntitySet Name="Usuarios" EntityType="ProyectoFinalP2Model.Usuarios" />
+    <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos">
       <End Role="Departamentos" EntitySet="Departamentos" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
-    <EntitySet Name="EnvioDocumento" EntityType="ProyectoFinalP2Model.EnvioDocumento" />
     <AssociationSet Name="fk_EnvioDocumento_IdDeptDestino" Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino">
       <End Role="Departamentos" EntitySet="Departamentos" />
       <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
@@ -58,6 +21,17 @@
       <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="IdDepartamento" />
+    </Key>
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Siglas" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" FromRole="Departamentos" ToRole="Usuarios" />
+    <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" FromRole="Departamentos" ToRole="EnvioDocumento" />
+    <NavigationProperty Name="EnvioDocumento1" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" FromRole="Departamentos" ToRole="EnvioDocumento" />
+  </EntityType>
   <EntityType Name="EnvioDocumento">
     <Key>
       <PropertyRef Name="IdEnvio" />
@@ -73,6 +47,31 @@
     <NavigationProperty Name="Departamentos1" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" FromRole="EnvioDocumento" ToRole="Departamentos" />
     <NavigationProperty Name="Usuarios" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" FromRole="EnvioDocumento" ToRole="Usuarios" />
   </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="Cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdCuenta" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Departamentos" Relationship="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" FromRole="Usuarios" ToRole="Departamentos" />
+    <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" FromRole="Usuarios" ToRole="EnvioDocumento" />
+  </EntityType>
+  <Association Name="fk_Departamentos_IdDepartamentos">
+    <End Type="ProyectoFinalP2Model.Departamentos" Role="Departamentos" Multiplicity="1" />
+    <End Type="ProyectoFinalP2Model.Usuarios" Role="Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_EnvioDocumento_IdDeptDestino">
     <End Type="ProyectoFinalP2Model.Departamentos" Role="Departamentos" Multiplicity="1" />
     <End Type="ProyectoFinalP2Model.EnvioDocumento" Role="EnvioDocumento" Multiplicity="*" />

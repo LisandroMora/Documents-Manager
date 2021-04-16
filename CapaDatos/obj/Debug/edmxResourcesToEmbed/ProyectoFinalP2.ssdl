@@ -26,14 +26,13 @@
     </Key>
     <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="IdDepartamento" Type="int" Nullable="false" />
-    <Property Name="Cargo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Cargo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdCuenta" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <Association Name="fk_Departamentos_IdDepartamentos">
-    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Departamentos">

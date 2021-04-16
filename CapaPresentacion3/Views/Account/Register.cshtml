@@ -4,7 +4,7 @@
 }
 
 <div class="d-flex justify-content-center p-5">
-    <div class="row w-75 rounded p-0 shadow-lg">
+    <div class="row rounded p-0 shadow-lg">
         <div class="col-sm-7 p-0">
             <h2 class="text-center my-4">@ViewBag.Title.</h2>
             <hr />
@@ -14,9 +14,27 @@
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
+                        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
                         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.IdDepartamento, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.IdDepartamento, new { @class = "form-control" })
+                        </div>
+                    </div>
+                <div class="form-group">
+                        @Html.LabelFor(m => m.Cargo, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Cargo, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
