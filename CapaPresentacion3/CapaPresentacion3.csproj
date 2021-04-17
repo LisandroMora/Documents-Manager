@@ -363,6 +363,7 @@
     <Content Include="Views\Documentos\InicioDocumentos.cshtml" />
     <Content Include="Views\Documentos\Lista.cshtml" />
     <Content Include="Views\Documentos\Create.cshtml" />
+    <Content Include="Views\Usuarios\Filtro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +382,10 @@
     <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
       <Project>{817d1a77-f12d-4799-ae49-3b41702d8c00}</Project>
       <Name>CapaNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaServicios\CapaServicios.csproj">
+      <Project>{b3d947b7-3f97-4f1c-96ee-8b8beb1a025a}</Project>
+      <Name>CapaServicios</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

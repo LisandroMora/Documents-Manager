@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CapaEntidades;
 using CapaNegocio;
+using CapaServicios;
 
 namespace CapaPresentacion.Controllers
 {
@@ -14,6 +15,7 @@ namespace CapaPresentacion.Controllers
         // GET: Usuarios
         UsuarioNegocio UserNegocio = new UsuarioNegocio();
         DepartamentosNegocio departamentos = new DepartamentosNegocio();
+        UsuarioServicios servicios = new UsuarioServicios();
         public ActionResult Inicio()
         {
             return View();
@@ -23,6 +25,12 @@ namespace CapaPresentacion.Controllers
         public ActionResult Lista()
         {
             return View(UserNegocio.MostrarUsuario());
+        }
+
+        [HttpPost]
+        public ActionResult Filtro(string nombre)
+        {
+            return View(servicios.FiltarUsuario(nombre));
         }
 
         // GET: Usuarios/Create

@@ -12,6 +12,8 @@ namespace CapaDatos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     using CapaEntidades;
     
     public partial class ProyectoFinalP2Entities : DbContext
@@ -30,5 +32,14 @@ namespace CapaDatos
         public virtual DbSet<EnvioDocumento> EnvioDocumento { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+    
+        public virtual ObjectResult<ReporteUsuarios_Result> ReporteUsuarios(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteUsuarios_Result>("ReporteUsuarios", nombreParameter);
+        }
     }
 }

@@ -117,3 +117,6 @@ C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresent
 C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresentacion3\obj\Debug\CapaPresentacion3.Migrations.InitialCreate.resources
 C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresentacion3\obj\Debug\CapaPresentacion3.csproj.GenerateResource.cache
 C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresentacion3\obj\Debug\CapaPresentacion3.Migrations.AgregoCamposLogin.resources
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresentacion3\bin\CapaServicios.dll
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresentacion3\bin\CapaServicios.pdb
+C:\Users\lisan\OneDrive\Escritorio\TAREAS C4\Prog II\PROYECTOFINALP2\CapaPresentacion3\bin\CapaServicios.dll.config

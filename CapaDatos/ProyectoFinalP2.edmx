@@ -116,6 +116,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ReporteUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="ProyectoFinalP2ModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
@@ -171,6 +174,9 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <FunctionImport Name="ReporteUsuarios" ReturnType="Collection(ProyectoFinalP2Model.ReporteUsuarios_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Departamentos">
           <Key>
@@ -293,6 +299,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="ReporteUsuarios_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="256" />
+          <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IdCuenta" Nullable="true" MaxLength="128" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -354,6 +368,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ReporteUsuarios" FunctionName="ProyectoFinalP2Model.Store.ReporteUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteUsuarios_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

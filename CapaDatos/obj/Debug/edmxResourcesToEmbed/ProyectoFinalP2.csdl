@@ -25,6 +25,9 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
+    <FunctionImport Name="ReporteUsuarios" ReturnType="Collection(ProyectoFinalP2Model.ReporteUsuarios_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Departamentos">
     <Key>
@@ -147,4 +150,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="ReporteUsuarios_Result">
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="256" />
+    <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+    <Property Type="String" Name="Cargo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="IdCuenta" Nullable="true" MaxLength="128" />
+  </ComplexType>
 </Schema>

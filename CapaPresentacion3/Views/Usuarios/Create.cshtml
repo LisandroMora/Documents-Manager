@@ -1,65 +1,80 @@
-﻿@model CapaEntidades.Usuarios
-
+﻿@model CapaPresentacion3.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Nuevo Usuario";
-    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+    ViewBag.Title = "Crear Cuenta";
 }
 
-<h2 class="text-center">Nuevo Usuario</h2>
-<hr />
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="d-flex">
-        <div class="col-7 ml-5 mt-5">
-            <div class="form-group row mt-4">
-                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.IdDepartamento, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.DropDownListFor(model => model.IdDepartamento, (IEnumerable<SelectListItem>)items, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.IdDepartamento, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
+<div class="d-flex justify-content-center p-5">
+    <div class="row rounded p-0 shadow-lg">
+        <div class="col-sm-8 p-0 pb-2">
+            <h2 class="text-center my-4">@ViewBag.Title.</h2>
+            <hr />
+            <div class="form-group mx-5 mt-4 h-75">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10 p-0 mt-4">
-                            <input type="submit" value="Nuevo Usuario" class="btn btn-outline-info btn-block" />
+                        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label p-0" })
+                        <div class="col-md-12 p-0">
+                            @Html.TextBoxFor(m => m.Nombre, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Nombre del empleado" })
                         </div>
                     </div>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(m => m.UserName, new { @class = "col-md-12 control-label p-0" })
+                            <div class="col-md-12 p-0">
+                                @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Nombre de Usuario" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label p-0" })
+                            <div class="col-md-12 p-0">
+                                @Html.TextBoxFor(m => m.Email, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Correo Electronico" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label p-0" })
+                            <div class="col-md-12 p-0">
+                                @Html.PasswordFor(m => m.Password, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Contraseña" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-12 control-label p-0" })
+                            <div class="col-md-12 p-0">
+                                @Html.PasswordFor(m => m.ConfirmPassword, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Confirmar contraseña" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(m => m.IdDepartamento, new { @class = "col-md-2 control-label p-0" })
+                            <div class="col-md-12 p-0">
+                                @Html.TextBoxFor(m => m.IdDepartamento, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Departamento" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(m => m.Cargo, new { @class = "col-md-2 control-label p-0" })
+                            <div class="col-md-12 p-0">
+                                @Html.TextBoxFor(m => m.Cargo, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Cargo" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mx-0 mt-2 mb-3">
+                        <div class="col-12 p-0">
+                            <input type="submit" class="btn btn-outline-primary btn-block w-75 mx-auto" value="Register" />
+                        </div>
+                    </div>
+                }
             </div>
-
-
         </div>
-        <div class="col d-flex justify-content-center align-items-center">
-            <img src="~/Images/NuevoUsuario.png" class="img-fluid" />
+        <div class="col m-0 p-0">
+            <img src="~/Images/registro.jpg" alt="..." class="img-fluid w-100 rounded-right" />
         </div>
     </div>
-
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Inicio")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
