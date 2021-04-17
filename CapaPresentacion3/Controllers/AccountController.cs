@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CapaPresentacion3.Models;
+using CapaEntidades;
 
 namespace CapaPresentacion3.Controllers
 {
@@ -138,7 +139,7 @@ namespace CapaPresentacion3.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {
+        {            
             return View();
         }
 

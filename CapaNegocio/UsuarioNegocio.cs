@@ -34,5 +34,9 @@ namespace CapaNegocio
         {
             return UsuarioDatos.GetUsuarios(id);
         }
+        public static Usuarios GetCuentaUsuarios(string cuenta)
+        {
+            return UsuarioDatos.GetCuentaUsuarios(cuenta);
+        }
     }
 }

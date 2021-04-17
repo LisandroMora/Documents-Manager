@@ -28,14 +28,6 @@
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.DropDownListFor(model => model.IdUsuario, (IEnumerable<SelectListItem>)usuarios, "Usuario", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group row">
             @Html.LabelFor(model => model.IdDeptDestino, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.IdDeptDestino, (IEnumerable<SelectListItem>)departamentos, "Destino", new { @class = "form-control" })

@@ -5,6 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProyectoFinalP2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="IdDepartamento" Type="int" Nullable="false" />
+          <Property Name="Cargo" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Departamentos">
           <Key>
             <PropertyRef Name="IdDepartamento" />
@@ -84,7 +104,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuarios_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ProyectoFinalP2ModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnvioDocumento" EntityType="Self.EnvioDocumento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -103,6 +136,10 @@
           <AssociationSet Name="fk_EnvioDocumento_IdUsuario" Association="Self.fk_EnvioDocumento_IdUsuario">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_AspNetUsers" Association="Self.FK_Usuarios_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -128,6 +165,11 @@
           <AssociationSet Name="fk_EnvioDocumento_IdUsuario" Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUsers" EntityType="ProyectoFinalP2Model.AspNetUsers" />
+          <AssociationSet Name="FK_Usuarios_AspNetUsers" Association="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Departamentos">
@@ -168,6 +210,7 @@
           <Property Name="IdCuenta" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departamentos" Relationship="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" FromRole="Usuarios" ToRole="Departamentos" />
           <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" FromRole="Usuarios" ToRole="EnvioDocumento" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers" FromRole="Usuarios" ToRole="AspNetUsers" />
         </EntityType>
         <Association Name="fk_Departamentos_IdDepartamentos">
           <End Type="ProyectoFinalP2Model.Departamentos" Role="Departamentos" Multiplicity="1" />
@@ -217,6 +260,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="Cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers" FromRole="AspNetUsers" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_Usuarios_AspNetUsers">
+          <End Type="ProyectoFinalP2Model.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="ProyectoFinalP2Model.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -254,6 +330,27 @@
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ProyectoFinalP2Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

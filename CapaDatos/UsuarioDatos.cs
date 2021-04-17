@@ -43,5 +43,10 @@ namespace CapaDatos
         {
             return DB.Usuarios.Where(a => a.IdUsuario == id).FirstOrDefault();
         }
+
+        public static Usuarios GetCuentaUsuarios(string cuenta)
+        {
+            return DB.Usuarios.Where(a => a.IdCuenta == cuenta).FirstOrDefault();
+        }
     }
 }

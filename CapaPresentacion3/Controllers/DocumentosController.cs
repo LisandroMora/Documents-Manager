@@ -14,6 +14,7 @@ namespace CapaPresentacion3.Controllers
         DocumentosNegocio negocio = new DocumentosNegocio();
         UsuarioNegocio UserNegocio = new UsuarioNegocio();
         DepartamentosNegocio departamentos = new DepartamentosNegocio();
+        
 
         // GET: Documentos
         public ActionResult InicioDocumentos()
@@ -59,8 +60,10 @@ namespace CapaPresentacion3.Controllers
         [HttpPost]
         public ActionResult Create(EnvioDocumento documentos)
         {
+            var usuario = UserCuentasNeg.GetUser(User.Identity.Name);
+            var empleado = UsuarioNegocio.GetCuentaUsuarios(usuario.Id);
+            documentos.IdUsuario = empleado.IdUsuario;
             negocio.NuevoDocumento(documentos);
-
             return RedirectToAction("InicioDocumentos");
         }
 

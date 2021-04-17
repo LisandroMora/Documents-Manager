@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectoFinalP2.edmx</DependentUpon>
     </Compile>
+    <Compile Include="UserCuentas.cs" />
     <Compile Include="UsuarioDatos.cs" />
   </ItemGroup>
   <ItemGroup>

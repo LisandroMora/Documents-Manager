@@ -38,5 +38,10 @@ namespace CapaNegocio
         {
             documento.IdDeptOrigen = UsuarioDatos.GetUsuarios(documento.IdUsuario).IdDepartamento;
         }
+
+        public void DeterminarUsuario()
+        {
+
+        }
     }
 }

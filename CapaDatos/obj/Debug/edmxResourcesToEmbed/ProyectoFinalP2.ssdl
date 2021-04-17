@@ -1,5 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ProyectoFinalP2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" />
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="Cargo" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Departamentos">
     <Key>
       <PropertyRef Name="IdDepartamento" />
@@ -79,7 +99,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Usuarios_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdCuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ProyectoFinalP2ModelStoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EnvioDocumento" EntityType="Self.EnvioDocumento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -98,6 +131,10 @@
     <AssociationSet Name="fk_EnvioDocumento_IdUsuario" Association="Self.fk_EnvioDocumento_IdUsuario">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_AspNetUsers" Association="Self.FK_Usuarios_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
