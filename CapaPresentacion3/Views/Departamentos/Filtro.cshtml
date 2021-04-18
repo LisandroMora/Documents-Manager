@@ -1,15 +1,10 @@
-﻿@model IEnumerable<CapaEntidades.Departamentos>
+﻿@model IEnumerable<CapaEntidades.ReporteDepartamentos_Result>
 
 @{
-    ViewBag.Title = "Lista";
+    ViewBag.Title = "Filtro";
 }
 
-<h2>Lista</h2>
-
-<form class="form-inline my-2 mb-3 float-right" action="/Departamentos/Filtro" method="post">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nombre">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+<h2>Filtro</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -40,8 +35,9 @@
             @Html.DisplayFor(modelItem => item.Siglas)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdDepartamento, nombre=item.Nombre, siglas=item.Siglas }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdDepartamento })
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

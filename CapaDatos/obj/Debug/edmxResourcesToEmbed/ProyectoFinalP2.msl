@@ -68,5 +68,40 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReporteDepartamentos" FunctionName="ProyectoFinalP2Model.Store.ReporteDepartamentos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDepartamentos_Result">
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReporteDocumentos" FunctionName="ProyectoFinalP2Model.Store.ReporteDocumentos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDocumentos_Result">
+          <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReporteDocFecha" FunctionName="ProyectoFinalP2Model.Store.ReporteDocFecha">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDocFecha_Result">
+          <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

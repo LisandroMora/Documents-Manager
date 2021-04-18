@@ -92,18 +92,10 @@ namespace CapaPresentacion.Controllers
 
         // POST: Usuarios/Delete/5
         [HttpPost]
-        public ActionResult Delete(Usuarios usuario)
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                UserNegocio.Eliminar(usuario);
-
-                return RedirectToAction("Inicio");
-            }
-            catch
-            {
-                return View();
-            }
+            UserNegocio.Eliminar(id);
+            return RedirectToAction("Inicio");
         }
     }
 }

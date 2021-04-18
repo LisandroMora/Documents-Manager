@@ -51,14 +51,22 @@
             @Html.DisplayFor(model => model.Cargo)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCuenta)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Inicio")
+            <input type="submit" value="Delete" class="btn btn-default" name="usuario"/> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

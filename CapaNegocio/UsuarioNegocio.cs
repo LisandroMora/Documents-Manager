@@ -26,9 +26,9 @@ namespace CapaNegocio
             datos.EditarUsuario(id, nombre, correo, IdDepartamento, cargo);
         }
 
-        public void Eliminar(Usuarios usuario)
+        public void Eliminar(int id)
         {
-            datos.Eliminar(usuario);
+            datos.Eliminar(id);
         }
         public static Usuarios GetUsuarios(int id)
         {

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartamentoServicio.cs" />
+    <Compile Include="DocumentosServicios.cs" />
     <Compile Include="UsuarioServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

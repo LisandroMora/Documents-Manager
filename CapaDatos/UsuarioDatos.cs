@@ -32,9 +32,9 @@ namespace CapaDatos
             DB.SaveChanges();
         }
 
-        public void Eliminar(Usuarios usuario)
+        public void Eliminar(int id)
         {
-            var registro = DB.Usuarios.Where(a => a.IdUsuario == usuario.IdUsuario).FirstOrDefault();
+            var registro = DB.Usuarios.Find(id);
             DB.Usuarios.Remove(registro);
             DB.SaveChanges();
         }

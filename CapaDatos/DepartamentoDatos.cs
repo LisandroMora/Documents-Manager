@@ -30,9 +30,9 @@ namespace CapaDatos
             DB.SaveChanges();
         }
 
-        public void EliminarDepartamento(Departamentos departamento)
+        public void EliminarDepartamento(int id)
         {
-            var registro = DB.Departamentos.Where(a => a.IdDepartamento == departamento.IdDepartamento).FirstOrDefault();
+            var registro = DB.Departamentos.Where(a => a.IdDepartamento == id).FirstOrDefault();
             DB.Departamentos.Remove(registro);
             DB.SaveChanges();
         }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CapaEntidades;
 using CapaNegocio;
+using CapaServicios;
 
 namespace CapaPresentacion3.Controllers
 {
@@ -14,6 +15,7 @@ namespace CapaPresentacion3.Controllers
         DocumentosNegocio negocio = new DocumentosNegocio();
         UsuarioNegocio UserNegocio = new UsuarioNegocio();
         DepartamentosNegocio departamentos = new DepartamentosNegocio();
+        DocumentosServicios servicios = new DocumentosServicios();
         
 
         // GET: Documentos
@@ -26,6 +28,18 @@ namespace CapaPresentacion3.Controllers
         public ActionResult Lista()
         {
             return View(negocio.MostrarDocumentos());
+        }
+
+        [HttpPost]
+        public ActionResult Filtro(string filtro, string consulta)
+        {
+            return View(servicios.FiltrarDocumentos(filtro, consulta));
+        }
+
+        [HttpPost]
+        public ActionResult FiltroBusqueda(string desde, string hasta)
+        {
+            return View(servicios.FiltrarDocumentosXFecha(desde, hasta));
         }
 
         // GET: Documentos/Create

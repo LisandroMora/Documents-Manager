@@ -28,7 +28,6 @@ namespace CapaNegocio
             if (numero < 10) digitos = "000";
             else if (numero < 100 && numero > 9) digitos = "00";
             else digitos = "0";
-            DepartamentoDatos.GetDepartamentos(documento.IdDeptOrigen);
             string secuencia = $"{documento.Fecha.Year}-{DepartamentoDatos.GetDepartamentos(documento.IdDeptOrigen).Siglas}-" +
                 $"{DepartamentoDatos.GetDepartamentos(documento.IdDeptDestino).Siglas}-{digitos+numero}";
             documento.Secuencia = secuencia;
@@ -39,9 +38,5 @@ namespace CapaNegocio
             documento.IdDeptOrigen = UsuarioDatos.GetUsuarios(documento.IdUsuario).IdDepartamento;
         }
 
-        public void DeterminarUsuario()
-        {
-
-        }
     }
 }

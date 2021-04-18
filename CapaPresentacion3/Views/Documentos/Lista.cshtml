@@ -6,6 +6,23 @@
 
 <h2>Lista</h2>
 
+<div class="my-2 mb-3 float-right">
+    <form class="form-inline" action="/Documentos/Filtro" method="post" id="busqueda1">
+        <input class="form-control mr-sm-2" type="text" placeholder="Filtro" aria-label="Search" name="filtro">
+        <input class="form-control mr-sm-2" type="search" placeholder="Consulta" aria-label="Search" name="consulta">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <form class="form-inline d-none" action="/Documentos/FiltroBusqueda" method="post" id="busqueda2">
+        <input class="form-control mr-sm-2" type="date" placeholder="Desde" aria-label="Desde" name="desde">
+        <input class="form-control mr-sm-2" type="date" placeholder="Hasta" aria-label="Hasta" name="hasta">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="fecha">
+        <label class="custom-control-label" for="fecha">Filtrar por fecha</label>
+    </div>
+</div>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -35,34 +52,55 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdEnvio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoDocumento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuarios.AspNetUsers.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Departamentos1.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Secuencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEnvio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuarios.AspNetUsers.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamentos1.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Secuencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<script>
+    const busqueda1 = document.getElementById("busqueda1");
+    const busqueda2 = document.getElementById("busqueda2");
+    const fecha = document.getElementById("fecha");
+
+    function cambio() {
+        if (fecha.checked == true) {
+            busqueda1.classList.add("d-none");
+            busqueda2.classList.remove("d-none");
+        }
+        else {
+            busqueda2.classList.add("d-none");
+            busqueda1.classList.remove("d-none");
+        }
+    }
+
+    fecha.addEventListener('change', cambio)
+
+</script>

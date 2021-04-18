@@ -8,13 +8,12 @@ using CapaDatos;
 
 namespace CapaServicios
 {
-    public class UsuarioServicios
+    public class DepartamentoServicio
     {
         ProyectoFinalP2Entities db = new ProyectoFinalP2Entities();
-        public List<ReporteUsuarios_Result> FiltarUsuario(string nombre)
+        public List<ReporteDepartamentos_Result> FiltrarDept(string nombre)
         {
-            return db.ReporteUsuarios(nombre).ToList();
+            return db.ReporteDepartamentos(nombre).ToList();
         }
-
     }
 }

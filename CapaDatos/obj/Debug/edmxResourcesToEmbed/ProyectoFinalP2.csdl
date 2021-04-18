@@ -28,6 +28,17 @@
     <FunctionImport Name="ReporteUsuarios" ReturnType="Collection(ProyectoFinalP2Model.ReporteUsuarios_Result)">
       <Parameter Name="Nombre" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="ReporteDepartamentos" ReturnType="Collection(ProyectoFinalP2Model.ReporteDepartamentos_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ReporteDocumentos" ReturnType="Collection(ProyectoFinalP2Model.ReporteDocumentos_Result)">
+      <Parameter Name="Filtro" Mode="In" Type="String" />
+      <Parameter Name="Consulta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ReporteDocFecha" ReturnType="Collection(ProyectoFinalP2Model.ReporteDocFecha_Result)">
+      <Parameter Name="desde" Mode="In" Type="String" />
+      <Parameter Name="hasta" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Departamentos">
     <Key>
@@ -157,5 +168,28 @@
     <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
     <Property Type="String" Name="Cargo" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="IdCuenta" Nullable="true" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="ReporteDepartamentos_Result">
+    <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="Siglas" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="ReporteDocumentos_Result">
+    <Property Type="Int32" Name="IdEnvio" Nullable="false" />
+    <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="Int32" Name="IdDeptOrigen" Nullable="false" />
+    <Property Type="Int32" Name="IdDeptDestino" Nullable="false" />
+    <Property Type="String" Name="Secuencia" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ReporteDocFecha_Result">
+    <Property Type="Int32" Name="IdEnvio" Nullable="false" />
+    <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="Int32" Name="IdDeptOrigen" Nullable="false" />
+    <Property Type="Int32" Name="IdDeptDestino" Nullable="false" />
+    <Property Type="String" Name="Secuencia" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
   </ComplexType>
 </Schema>

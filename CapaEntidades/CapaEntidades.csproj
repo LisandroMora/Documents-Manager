@@ -63,6 +63,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReporteDepartamentos_Result.cs">
+      <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDocFecha_Result.cs">
+      <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDocumentos_Result.cs">
+      <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReporteUsuarios_Result.cs">
       <DependentUpon>ProyectoFinalP2.tt</DependentUpon>
     </Compile>

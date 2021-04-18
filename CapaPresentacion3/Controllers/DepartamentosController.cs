@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CapaEntidades;
 using CapaNegocio;
+using CapaServicios;
 
 namespace CapaPresentacion.Controllers
 {
@@ -12,6 +13,7 @@ namespace CapaPresentacion.Controllers
     public class DepartamentosController : Controller
     {
         DepartamentosNegocio DepNegocio = new DepartamentosNegocio();
+        DepartamentoServicio servicio = new DepartamentoServicio();
         // GET: Departamentos
         public ActionResult Inicio()
         {
@@ -22,6 +24,12 @@ namespace CapaPresentacion.Controllers
         public ActionResult Lista()
         {
             return View(DepNegocio.MostrarDepartamentos());
+        }
+
+        [HttpPost]
+        public ActionResult Filtro(string nombre)
+        {
+            return View(servicio.FiltrarDept(nombre));
         }
 
         // GET: Departamentos/Create
@@ -76,10 +84,9 @@ namespace CapaPresentacion.Controllers
 
         // POST: Departamentos/Delete/5
         [HttpPost]
-        public ActionResult Delete(Departamentos departamento)
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            DepNegocio.EliminarDepartamento(departamento);
-
+            DepNegocio.EliminarDepartamento(id);
             return RedirectToAction("Inicio");
         }
     }

@@ -111,6 +111,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="ReporteDepartamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ReporteDocFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desde" Type="varchar" Mode="In" />
+    <Parameter Name="hasta" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ReporteDocumentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Consulta" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="ReporteUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
   </Function>
