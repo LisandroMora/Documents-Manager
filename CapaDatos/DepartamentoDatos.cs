@@ -37,7 +37,7 @@ namespace CapaDatos
             DB.SaveChanges();
         }
 
-        public static Departamentos GetDepartamentos(int ID)
+        public Departamentos GetDepartamentos(int ID)
         {
             return DB.Departamentos.Where(a => a.IdDepartamento == ID).FirstOrDefault();
         }

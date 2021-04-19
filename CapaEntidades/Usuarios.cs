@@ -27,9 +27,9 @@ namespace CapaEntidades
         public string Cargo { get; set; }
         public string IdCuenta { get; set; }
     
+        public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Departamentos Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnvioDocumento> EnvioDocumento { get; set; }
-        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

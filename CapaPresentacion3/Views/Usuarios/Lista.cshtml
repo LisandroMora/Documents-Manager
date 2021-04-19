@@ -4,21 +4,21 @@
     ViewBag.Title = "Lista";
 }
 
-<h2>Lista</h2>
+<h1 class="text-center m-5">Lista de Usuarios</h1>
 
 
 <form class="form-inline my-2 mb-3 float-right" action="/Usuarios/Filtro" method="post">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nombre"> 
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar por Nombre" aria-label="Search" name="nombre"> 
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
 </form>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Usuario", "Create", routeValues: null, htmlAttributes: new { @class = "text-decoration-none bg-primary text-light btn" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdUsuario)
+            <span>Usuario</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.Correo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdDepartamento)
+           <span>Departamento</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Cargo)
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.Cargo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdUsuario, nombre=item.Nombre, correo=item.Correo, 
-           IdDepartamento=item.IdDepartamento, cargo=item.Cargo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdUsuario })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdUsuario, nombre=item.Nombre, correo=item.Correo,
+           IdDepartamento=item.IdDepartamento, cargo=item.Cargo }, htmlAttributes: new { @class = "text-decoration-none bg-success text-light btn" })
+           @Html.ActionLink("Borrar", "Delete", new { id=item.IdUsuario }, htmlAttributes: new { @class = "text-decoration-none bg-danger text-light btn" })
         </td>
     </tr>
 }

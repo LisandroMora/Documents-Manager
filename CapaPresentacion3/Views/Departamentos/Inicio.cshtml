@@ -1,21 +1,27 @@
 ﻿@{
-    ViewBag.Title = "Inicio";
+    ViewBag.Title = "Departamentos";
 }
 
-<h1 class="text-center h1 m-5">Menu de Departamentos</h1>
+<h1 class="text-center h1 m-5 animate__animated animate__zoomIn">Menu de Departamentos</h1>
 <div class="container text-center">
     <div class="row">
         <div class="col-sm">
-            <a class="btn" href="/Departamentos/Create">
+            <figure class="imghvr-shutter-in-horiz bg-transparent p-3">
                 <img src="~/Images/Departamentos.png" class="w-75 shadow-lg rounded-circle bg-light" alt="..." />
-                <p class="h2 mt-4">Crear Departamento</p>
-            </a>
+                <figcaption class="bg-info text-center text-light d-flex">
+                    <p class="h1 mt-5 mx-auto my-auto">Crear <br>Departamento</p>
+                </figcaption>
+                <a href="/Departamentos/Create"></a>
+            </figure>
         </div>
         <div class="col-sm">
-            <a class="btn" href="/Departamentos/Lista">
+            <figure class="imghvr-shutter-in-horiz bg-transparent p-3">
                 <img src="~/Images/ListDept.png" class="w-75 rounded-circle p-2 shadow-lg" alt="..." />
-                <p class="h2 mt-4">Lista de Departamentos</p>
-            </a>
+                <figcaption class="bg-info text-center text-light d-flex">
+                    <p class="h1 mt-5 mx-auto my-auto">Lista de <br>Departamento</p>
+                </figcaption>
+                <a href="/Departamentos/Lista"></a>
+            </figure>
         </div>
     </div>
 </div>

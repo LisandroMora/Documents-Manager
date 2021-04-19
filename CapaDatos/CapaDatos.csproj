@@ -67,24 +67,15 @@
     <Compile Include="UsuarioDatos.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="ProyectoFinalP2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProyectoFinalP2.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="ProyectoFinalP2.edmx.diagram">
       <DependentUpon>ProyectoFinalP2.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ProyectoFinalP2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ProyectoFinalP2.Context.cs</LastGenOutput>
-      <DependentUpon>ProyectoFinalP2.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -94,6 +85,13 @@
       <Project>{cb5db34c-d655-4e51-971c-be96cf0a848b}</Project>
       <Name>CapaEntidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProyectoFinalP2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoFinalP2.edmx</DependentUpon>
+      <LastGenOutput>ProyectoFinalP2.Context.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

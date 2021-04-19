@@ -39,14 +39,20 @@ namespace CapaDatos
             DB.SaveChanges();
         }
 
-        public static Usuarios GetUsuarios(int id)
+        public Usuarios GetUsuarios(int id)
         {
             return DB.Usuarios.Where(a => a.IdUsuario == id).FirstOrDefault();
         }
 
-        public static Usuarios GetCuentaUsuarios(string cuenta)
+        public Usuarios GetCuentaUsuarios(string cuenta)
         {
             return DB.Usuarios.Where(a => a.IdCuenta == cuenta).FirstOrDefault();
         }
+
+        public List<ReporteUsuarios_Result> FiltarUsuario(string nombre)
+        {
+            return DB.ReporteUsuarios(nombre).ToList();
+        }
+
     }
 }

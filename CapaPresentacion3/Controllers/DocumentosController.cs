@@ -14,6 +14,7 @@ namespace CapaPresentacion3.Controllers
     {
         DocumentosNegocio negocio = new DocumentosNegocio();
         UsuarioNegocio UserNegocio = new UsuarioNegocio();
+        UserCuentasNeg cuenta = new UserCuentasNeg();
         DepartamentosNegocio departamentos = new DepartamentosNegocio();
         DocumentosServicios servicios = new DocumentosServicios();
         
@@ -74,55 +75,26 @@ namespace CapaPresentacion3.Controllers
         [HttpPost]
         public ActionResult Create(EnvioDocumento documentos)
         {
-            var usuario = UserCuentasNeg.GetUser(User.Identity.Name);
-            var empleado = UsuarioNegocio.GetCuentaUsuarios(usuario.Id);
+            var usuario = cuenta.GetUser(User.Identity.Name);
+            var empleado = UserNegocio.GetCuentaUsuarios(usuario.Id);
             documentos.IdUsuario = empleado.IdUsuario;
             negocio.NuevoDocumento(documentos);
             return RedirectToAction("InicioDocumentos");
         }
 
-        // GET: Documentos/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Documentos/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: Documentos/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(negocio.GetDocumento(id));
         }
 
         // POST: Documentos/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            negocio.EliminarDocumento(id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("InicioDocumentos");
         }
     }
 }

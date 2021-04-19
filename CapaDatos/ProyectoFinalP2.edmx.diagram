@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="51db4be7df1a46088359845ccea843de" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="ProyectoFinalP2Model.Departamentos" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="ProyectoFinalP2Model.EnvioDocumento" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="ProyectoFinalP2Model.Usuarios" PointX="3" PointY="3.875" Width="1.5" />
-        <AssociationConnector Association="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" />
-        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" />
-        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" />
-        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" />
-        <EntityTypeShape EntityType="ProyectoFinalP2Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="5" />
-        <AssociationConnector Association="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers" />
+      <Diagram DiagramId="262eaebc7a9542beba2b7096178c81eb" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="ProyectoFinalP2Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoFinalP2Model.Departamentos" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoFinalP2Model.EnvioDocumento" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoFinalP2Model.Usuarios" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

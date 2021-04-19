@@ -10,10 +10,10 @@ namespace CapaServicios
 {
     public class UsuarioServicios
     {
-        ProyectoFinalP2Entities db = new ProyectoFinalP2Entities();
+        UsuarioDatos datos = new UsuarioDatos();
         public List<ReporteUsuarios_Result> FiltarUsuario(string nombre)
         {
-            return db.ReporteUsuarios(nombre).ToList();
+            return datos.FiltarUsuario(nombre);
         }
 
     }

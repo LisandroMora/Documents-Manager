@@ -4,58 +4,64 @@
     ViewBag.Title = "Iniciar Sesion";
 }
 
-<div class="d-flex justify-content-center p-5">
-    <div class="row w-75 rounded p-0 shadow-lg">
-        <div class="col-sm-7 p-0">
-            <h2 class="text-center my-4">@ViewBag.Title.</h2>
-            <hr />
-            <div id="loginForm" class="form-group ml-4">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
+<body style="background-image: url(https://image.freepik.com/foto-gratis/elementos-oficina-sobre-fondo-blanco_1418-1080.jpg); /* The image used */ background-color: #cccccc; /* Used if the image is unavailable */ height: 100%; /* You must set a specified height */ background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div>
+        <div class="d-flex justify-content-center p-5">
+            <div class="row w-75 rounded p-0 shadow-lg bg-light">
+                <div class="col-sm-7 p-0">
+                    <h2 class="text-center my-4">@ViewBag.Title.</h2>
+                    <hr />
+                    <div id="loginForm" class="form-group ml-4">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Iniciar Sesion" class="btn btn-outline-info btn-block" />
+                                </div>
+                            </div>
+                            <p class="ml-3">
+                                @Html.ActionLink("Registrar un nuevo usuario", "Register")
+                            </p>
+                            @* Enable this once you have account confirmation enabled for password reset functionality
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>*@
+                        }
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Iniciar Sesion" class="btn btn-outline-info btn-block" />
-                        </div>
-                    </div>
-                    <p class="ml-3">
-                        @Html.ActionLink("Registrar un nuevo usuario", "Register")
-                    </p>
-                    @* Enable this once you have account confirmation enabled for password reset functionality
-                        <p>
-                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                        </p>*@
-                }
+                </div>
+                <div class="col m-0 p-0">
+                    <img src="~/Images/imglogin.jpg" alt="..." class="img-fluid w-100 rounded-right" />
+                </div>
             </div>
         </div>
-        <div class="col m-0 p-0">
-            <img src="~/Images/imglogin.jpg" alt="..." class="img-fluid w-100 rounded-right" />
-        </div>
+
     </div>
-</div>
+</body>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

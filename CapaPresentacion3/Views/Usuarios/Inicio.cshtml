@@ -1,21 +1,27 @@
 ﻿@{
-    ViewBag.Title = "Inicio";
+    ViewBag.Title = "Usuarios";
 }
 
-<h1 class="text-center h1 m-5">Menu de Usuarios</h1>
-<div class="container text-center">
+<h1 class="text-center h1 mt-5 animate__animated animate__zoomIn">Menu de Usuarios</h1>
+<div class="container text-center mt-5">
     <div class="row">
         <div class="col-sm">
-            <a class="btn" href="/Usuarios/Create">
+            <figure class="imghvr-shutter-in-horiz bg-transparent p-3">
                 <img src="~/Images/CUser.png" class="w-75 shadow-lg rounded-circle" alt="..." />
-                <p class="h2 mt-4">Crear Usuario</p>
-            </a>
+                <figcaption class="bg-info text-center text-light d-flex">
+                    <p class="h1 mt-5 mx-auto my-auto">Crear <br>Usuarios</p>
+                </figcaption>
+                <a href="/Usuarios/Create"></a>
+            </figure>
         </div>
         <div class="col-sm">
-            <a class="btn" href="/Usuarios/Lista">
+            <figure class="imghvr-shutter-in-horiz bg-transparent p-3">
                 <img src="~/Images/ListUser.png" class="w-75 bg-danger rounded-circle p-2 shadow-lg" alt="..." />
-                <p class="h2 mt-4">Lista de Usuarios</p>
-            </a>
+                <figcaption class="bg-info text-center text-light d-flex">
+                    <p class="h1 mt-5 mx-auto my-auto">Lista de <br>Usuarios</p>
+                </figcaption>
+                <a href="/Usuarios/Lista"></a>
+            </figure>
         </div>
     </div>
 </div>

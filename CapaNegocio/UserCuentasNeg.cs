@@ -10,8 +10,8 @@ namespace CapaNegocio
 {
     public class UserCuentasNeg
     {
-        static UserCuentas datos = new UserCuentas();
-        public static AspNetUsers GetUser(string name)
+        UserCuentas datos = new UserCuentas();
+        public AspNetUsers GetUser(string name)
         {
             return datos.GetUser(name);
         }

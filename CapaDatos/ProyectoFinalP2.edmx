@@ -160,56 +160,37 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoFinalP2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ProyectoFinalP2Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Departamentos" EntityType="ProyectoFinalP2Model.Departamentos" />
-          <EntitySet Name="EnvioDocumento" EntityType="ProyectoFinalP2Model.EnvioDocumento" />
-          <EntitySet Name="Usuarios" EntityType="ProyectoFinalP2Model.Usuarios" />
-          <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos">
-            <End Role="Departamentos" EntitySet="Departamentos" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="fk_EnvioDocumento_IdDeptDestino" Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino">
-            <End Role="Departamentos" EntitySet="Departamentos" />
-            <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
-          </AssociationSet>
-          <AssociationSet Name="fk_EnvioDocumento_IdDeptOrigen" Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen">
-            <End Role="Departamentos" EntitySet="Departamentos" />
-            <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
-          </AssociationSet>
-          <AssociationSet Name="fk_EnvioDocumento_IdUsuario" Association="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
-          </AssociationSet>
-          <EntitySet Name="AspNetUsers" EntityType="ProyectoFinalP2Model.AspNetUsers" />
-          <AssociationSet Name="FK_Usuarios_AspNetUsers" Association="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <FunctionImport Name="ReporteUsuarios" ReturnType="Collection(ProyectoFinalP2Model.ReporteUsuarios_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ReporteDepartamentos" ReturnType="Collection(ProyectoFinalP2Model.ReporteDepartamentos_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ReporteDocumentos" ReturnType="Collection(ProyectoFinalP2Model.ReporteDocumentos_Result)">
-            <Parameter Name="Filtro" Mode="In" Type="String" />
-            <Parameter Name="Consulta" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ReporteDocFecha" ReturnType="Collection(ProyectoFinalP2Model.ReporteDocFecha_Result)">
-            <Parameter Name="desde" Mode="In" Type="String" />
-            <Parameter Name="hasta" Mode="In" Type="String" />
-          </FunctionImport>
-        </EntityContainer>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="Cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_AspNetUsers" FromRole="AspNetUsers" ToRole="Usuarios" />
+        </EntityType>
         <EntityType Name="Departamentos">
           <Key>
             <PropertyRef Name="IdDepartamento" />
           </Key>
           <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Siglas" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuarios" Relationship="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" FromRole="Departamentos" ToRole="Usuarios" />
-          <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" FromRole="Departamentos" ToRole="EnvioDocumento" />
-          <NavigationProperty Name="EnvioDocumento1" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" FromRole="Departamentos" ToRole="EnvioDocumento" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Siglas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.fk_Departamentos_IdDepartamentos" FromRole="Departamentos" ToRole="Usuarios" />
+          <NavigationProperty Name="EnvioDocumento" Relationship="Self.fk_EnvioDocumento_IdDeptDestino" FromRole="Departamentos" ToRole="EnvioDocumento" />
+          <NavigationProperty Name="EnvioDocumento1" Relationship="Self.fk_EnvioDocumento_IdDeptOrigen" FromRole="Departamentos" ToRole="EnvioDocumento" />
         </EntityType>
         <EntityType Name="EnvioDocumento">
           <Key>
@@ -222,27 +203,39 @@
           <Property Name="IdDeptDestino" Type="Int32" Nullable="false" />
           <Property Name="Secuencia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Departamentos" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptDestino" FromRole="EnvioDocumento" ToRole="Departamentos" />
-          <NavigationProperty Name="Departamentos1" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdDeptOrigen" FromRole="EnvioDocumento" ToRole="Departamentos" />
-          <NavigationProperty Name="Usuarios" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" FromRole="EnvioDocumento" ToRole="Usuarios" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.fk_EnvioDocumento_IdDeptDestino" FromRole="EnvioDocumento" ToRole="Departamentos" />
+          <NavigationProperty Name="Departamentos1" Relationship="Self.fk_EnvioDocumento_IdDeptOrigen" FromRole="EnvioDocumento" ToRole="Departamentos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.fk_EnvioDocumento_IdUsuario" FromRole="EnvioDocumento" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="IdUsuario" />
           </Key>
           <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Correo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
-          <Property Name="Cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdCuenta" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Departamentos" Relationship="ProyectoFinalP2Model.fk_Departamentos_IdDepartamentos" FromRole="Usuarios" ToRole="Departamentos" />
-          <NavigationProperty Name="EnvioDocumento" Relationship="ProyectoFinalP2Model.fk_EnvioDocumento_IdUsuario" FromRole="Usuarios" ToRole="EnvioDocumento" />
-          <NavigationProperty Name="AspNetUsers" Relationship="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers" FromRole="Usuarios" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Usuarios_AspNetUsers" FromRole="Usuarios" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.fk_Departamentos_IdDepartamentos" FromRole="Usuarios" ToRole="Departamentos" />
+          <NavigationProperty Name="EnvioDocumento" Relationship="Self.fk_EnvioDocumento_IdUsuario" FromRole="Usuarios" ToRole="EnvioDocumento" />
         </EntityType>
+        <Association Name="FK_Usuarios_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_Departamentos_IdDepartamentos">
-          <End Type="ProyectoFinalP2Model.Departamentos" Role="Departamentos" Multiplicity="1" />
-          <End Type="ProyectoFinalP2Model.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departamentos">
               <PropertyRef Name="IdDepartamento" />
@@ -253,8 +246,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_EnvioDocumento_IdDeptDestino">
-          <End Type="ProyectoFinalP2Model.Departamentos" Role="Departamentos" Multiplicity="1" />
-          <End Type="ProyectoFinalP2Model.EnvioDocumento" Role="EnvioDocumento" Multiplicity="*" />
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="EnvioDocumento" Type="Self.EnvioDocumento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departamentos">
               <PropertyRef Name="IdDepartamento" />
@@ -265,8 +258,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_EnvioDocumento_IdDeptOrigen">
-          <End Type="ProyectoFinalP2Model.Departamentos" Role="Departamentos" Multiplicity="1" />
-          <End Type="ProyectoFinalP2Model.EnvioDocumento" Role="EnvioDocumento" Multiplicity="*" />
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="EnvioDocumento" Type="Self.EnvioDocumento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departamentos">
               <PropertyRef Name="IdDepartamento" />
@@ -277,8 +270,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_EnvioDocumento_IdUsuario">
-          <End Type="ProyectoFinalP2Model.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="ProyectoFinalP2Model.EnvioDocumento" Role="EnvioDocumento" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="EnvioDocumento" Type="Self.EnvioDocumento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="IdUsuario" />
@@ -288,60 +281,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
-          <Property Name="Cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Usuarios" Relationship="ProyectoFinalP2Model.FK_Usuarios_AspNetUsers" FromRole="AspNetUsers" ToRole="Usuarios" />
-        </EntityType>
-        <Association Name="FK_Usuarios_AspNetUsers">
-          <End Type="ProyectoFinalP2Model.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
-          <End Type="ProyectoFinalP2Model.Usuarios" Role="Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Usuarios">
-              <PropertyRef Name="IdCuenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="ReporteUsuarios_Result">
-          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Correo" Nullable="false" MaxLength="256" />
-          <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
-          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="IdCuenta" Nullable="true" MaxLength="128" />
-        </ComplexType>
+        <EntityContainer Name="ProyectoFinalP2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+          <EntitySet Name="EnvioDocumento" EntityType="Self.EnvioDocumento" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Usuarios_AspNetUsers" Association="Self.FK_Usuarios_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Departamentos_IdDepartamentos" Association="Self.fk_Departamentos_IdDepartamentos">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EnvioDocumento_IdDeptDestino" Association="Self.fk_EnvioDocumento_IdDeptDestino">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EnvioDocumento_IdDeptOrigen" Association="Self.fk_EnvioDocumento_IdDeptOrigen">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EnvioDocumento_IdUsuario" Association="Self.fk_EnvioDocumento_IdUsuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="EnvioDocumento" EntitySet="EnvioDocumento" />
+          </AssociationSet>
+          <FunctionImport Name="ReporteDepartamentos" ReturnType="Collection(ProyectoFinalP2Model.ReporteDepartamentos_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReporteDocFecha" ReturnType="Collection(ProyectoFinalP2Model.ReporteDocFecha_Result)">
+            <Parameter Name="desde" Mode="In" Type="String" />
+            <Parameter Name="hasta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReporteDocumentos" ReturnType="Collection(ProyectoFinalP2Model.ReporteDocumentos_Result)">
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Consulta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReporteUsuarios" ReturnType="Collection(ProyectoFinalP2Model.ReporteUsuarios_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
         <ComplexType Name="ReporteDepartamentos_Result">
           <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="60" />
           <Property Type="String" Name="Siglas" Nullable="false" MaxLength="10" />
-        </ComplexType>
-        <ComplexType Name="ReporteDocumentos_Result">
-          <Property Type="Int32" Name="IdEnvio" Nullable="false" />
-          <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="30" />
-          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
-          <Property Type="Int32" Name="IdDeptOrigen" Nullable="false" />
-          <Property Type="Int32" Name="IdDeptDestino" Nullable="false" />
-          <Property Type="String" Name="Secuencia" Nullable="true" MaxLength="30" />
-          <Property Type="DateTime" Name="Fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ReporteDocFecha_Result">
           <Property Type="Int32" Name="IdEnvio" Nullable="false" />
@@ -352,85 +335,103 @@
           <Property Type="String" Name="Secuencia" Nullable="true" MaxLength="30" />
           <Property Type="DateTime" Name="Fecha" Nullable="true" />
         </ComplexType>
-        </Schema>
+        <ComplexType Name="ReporteDocumentos_Result">
+          <Property Type="Int32" Name="IdEnvio" Nullable="false" />
+          <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="Int32" Name="IdDeptOrigen" Nullable="false" />
+          <Property Type="Int32" Name="IdDeptDestino" Nullable="false" />
+          <Property Type="String" Name="Secuencia" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ReporteUsuarios_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="256" />
+          <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IdCuenta" Nullable="true" MaxLength="128" />
+        </ComplexType>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ProyectoFinalP2ModelStoreContainer" CdmEntityContainer="ProyectoFinalP2Entities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ProyectoFinalP2Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Departamentos">
             <EntityTypeMapping TypeName="ProyectoFinalP2Model.Departamentos">
               <MappingFragment StoreEntitySet="Departamentos">
-                <ScalarProperty Name="Siglas" ColumnName="Siglas" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Siglas" ColumnName="Siglas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EnvioDocumento">
             <EntityTypeMapping TypeName="ProyectoFinalP2Model.EnvioDocumento">
               <MappingFragment StoreEntitySet="EnvioDocumento">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
-                <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
-                <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
                 <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+                <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+                <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="ProyectoFinalP2Model.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
-                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="ProyectoFinalP2Model.AspNetUsers">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ReporteUsuarios" FunctionName="ProyectoFinalP2Model.Store.ReporteUsuarios">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteUsuarios_Result">
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
                 <ScalarProperty Name="Cargo" ColumnName="Cargo" />
                 <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ReporteDepartamentos" FunctionName="ProyectoFinalP2Model.Store.ReporteDepartamentos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDepartamentos_Result">
                 <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReporteDocFecha" FunctionName="ProyectoFinalP2Model.Store.ReporteDocFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDocFecha_Result">
+                <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+                <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+                <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -447,16 +448,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ReporteDocFecha" FunctionName="ProyectoFinalP2Model.Store.ReporteDocFecha">
+          <FunctionImportMapping FunctionImportName="ReporteUsuarios" FunctionName="ProyectoFinalP2Model.Store.ReporteUsuarios">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDocFecha_Result">
-                <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
-                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+              <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteUsuarios_Result">
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
-                <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
-                <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

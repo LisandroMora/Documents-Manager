@@ -20,5 +20,6 @@ namespace CapaEntidades
         public int IdDeptDestino { get; set; }
         public string Secuencia { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+
     }
 }

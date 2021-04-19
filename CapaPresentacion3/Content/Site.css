@@ -1,6 +1,24 @@
-﻿
+﻿body{
+    background-image: url(https://image.freepik.com/foto-gratis/elementos-oficina-sobre-fondo-blanco_1418-1080.jpg); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100%; /* You must set a specified height */
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+table{
+    background-color:white;
+}
+
 .Links ul li{
     text-decoration:none;
     color:white;
 }
+.Links{
+    text-decoration:none;
+    color:white;
+}
+
+
 

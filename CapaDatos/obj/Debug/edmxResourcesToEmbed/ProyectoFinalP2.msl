@@ -1,79 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ProyectoFinalP2ModelStoreContainer" CdmEntityContainer="ProyectoFinalP2Entities">
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ProyectoFinalP2Model.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Departamentos">
       <EntityTypeMapping TypeName="ProyectoFinalP2Model.Departamentos">
         <MappingFragment StoreEntitySet="Departamentos">
-          <ScalarProperty Name="Siglas" ColumnName="Siglas" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Siglas" ColumnName="Siglas" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="EnvioDocumento">
       <EntityTypeMapping TypeName="ProyectoFinalP2Model.EnvioDocumento">
         <MappingFragment StoreEntitySet="EnvioDocumento">
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
-          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
-          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
           <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="ProyectoFinalP2Model.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
-          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
-          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="ProyectoFinalP2Model.AspNetUsers">
-        <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
-          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="ReporteUsuarios" FunctionName="ProyectoFinalP2Model.Store.ReporteUsuarios">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteUsuarios_Result">
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Correo" ColumnName="Correo" />
           <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
           <ScalarProperty Name="Cargo" ColumnName="Cargo" />
           <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="ReporteDepartamentos" FunctionName="ProyectoFinalP2Model.Store.ReporteDepartamentos">
       <ResultMapping>
         <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDepartamentos_Result">
           <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReporteDocFecha" FunctionName="ProyectoFinalP2Model.Store.ReporteDocFecha">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDocFecha_Result">
+          <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
+          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
+          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -90,16 +91,15 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ReporteDocFecha" FunctionName="ProyectoFinalP2Model.Store.ReporteDocFecha">
+    <FunctionImportMapping FunctionImportName="ReporteUsuarios" FunctionName="ProyectoFinalP2Model.Store.ReporteUsuarios">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteDocFecha_Result">
-          <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
-          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+        <ComplexTypeMapping TypeName="ProyectoFinalP2Model.ReporteUsuarios_Result">
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="IdDeptOrigen" ColumnName="IdDeptOrigen" />
-          <ScalarProperty Name="IdDeptDestino" ColumnName="IdDeptDestino" />
-          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

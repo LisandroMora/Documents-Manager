@@ -16,6 +16,7 @@ namespace CapaPresentacion.Controllers
         UsuarioNegocio UserNegocio = new UsuarioNegocio();
         DepartamentosNegocio departamentos = new DepartamentosNegocio();
         UsuarioServicios servicios = new UsuarioServicios();
+        
         public ActionResult Inicio()
         {
             return View();
@@ -46,7 +47,7 @@ namespace CapaPresentacion.Controllers
                 };
             });
 
-            ViewBag.items = ListaDept;
+            ViewBag.items2 = ListaDept;
 
             return View();
         }
@@ -73,7 +74,7 @@ namespace CapaPresentacion.Controllers
                 };
             });
             ViewBag.items = ListaDept;
-            return View(UsuarioNegocio.GetUsuarios(id));
+            return View(UserNegocio.GetUsuarios(id));
         }
 
         // POST: Usuarios/Edit/5
@@ -87,7 +88,7 @@ namespace CapaPresentacion.Controllers
         // GET: Usuarios/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(UsuarioNegocio.GetUsuarios(id));
+            return View(UserNegocio.GetUsuarios(id));
         }
 
         // POST: Usuarios/Delete/5

@@ -4,44 +4,49 @@
     ViewBag.Title = "Lista";
 }
 
-<h2>Lista</h2>
+<h1 class="text-center m-5">Lista de Documentos</h1>
 
 <div class="my-2 mb-3 float-right">
     <form class="form-inline" action="/Documentos/Filtro" method="post" id="busqueda1">
-        <input class="form-control mr-sm-2" type="text" placeholder="Filtro" aria-label="Search" name="filtro">
+        <select class="custom-select" id="inputGroupSelect01" name="filtro">
+            <option selected>Seleccione el filtro</option>
+            <option value="Empleado">Empleado</option>
+            <option value="Origen">Departamento Origen</option>
+            <option value="Destino">Departamento Destino</option>
+        </select>
         <input class="form-control mr-sm-2" type="search" placeholder="Consulta" aria-label="Search" name="consulta">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
     <form class="form-inline d-none" action="/Documentos/FiltroBusqueda" method="post" id="busqueda2">
         <input class="form-control mr-sm-2" type="date" placeholder="Desde" aria-label="Desde" name="desde">
         <input class="form-control mr-sm-2" type="date" placeholder="Hasta" aria-label="Hasta" name="hasta">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
-    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <div class="custom-control custom-checkbox my-2 mr-sm-2">
         <input type="checkbox" class="custom-control-input" id="fecha">
         <label class="custom-control-label" for="fecha">Filtrar por fecha</label>
     </div>
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Documento", "Create", routeValues: null, htmlAttributes: new { @class = "text-decoration-none bg-primary text-light btn" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdEnvio)
+            <span>Documento</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipoDocumento)
+            <span>Tipo</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdUsuario)
+            <span>Usuario</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdDeptOrigen)
+            <span>Origen</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdDeptDestino)
+            <span>Destino</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Secuencia)
@@ -74,11 +79,10 @@
                 @Html.DisplayFor(modelItem => item.Secuencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
+                @item.Fecha.ToShortDateString()
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.IdEnvio }, htmlAttributes: new { @class = "text-decoration-none bg-danger text-light btn" })
             </td>
         </tr>
     }

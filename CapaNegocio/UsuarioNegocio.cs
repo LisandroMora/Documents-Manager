@@ -10,7 +10,7 @@ namespace CapaNegocio
 {
     public class UsuarioNegocio
     {
-        static UsuarioDatos datos = new UsuarioDatos();
+        UsuarioDatos datos = new UsuarioDatos();
         public void NuevoUsuario(Usuarios usuario)
         {
             datos.NuevoUsuario(usuario);
@@ -30,13 +30,13 @@ namespace CapaNegocio
         {
             datos.Eliminar(id);
         }
-        public static Usuarios GetUsuarios(int id)
+        public Usuarios GetUsuarios(int id)
         {
-            return UsuarioDatos.GetUsuarios(id);
+            return datos.GetUsuarios(id);
         }
-        public static Usuarios GetCuentaUsuarios(string cuenta)
+        public Usuarios GetCuentaUsuarios(string cuenta)
         {
-            return UsuarioDatos.GetCuentaUsuarios(cuenta);
+            return datos.GetCuentaUsuarios(cuenta);
         }
     }
 }

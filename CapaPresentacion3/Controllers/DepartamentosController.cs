@@ -57,7 +57,7 @@ namespace CapaPresentacion.Controllers
         // GET: Departamentos/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(DepartamentosNegocio.GetDepartamentos(id));
+            return View(DepNegocio.GetDepartamentos(id));
         }
 
         // POST: Departamentos/Edit/5
@@ -79,7 +79,7 @@ namespace CapaPresentacion.Controllers
         // GET: Departamentos/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(DepartamentosNegocio.GetDepartamentos(id));
+            return View(DepNegocio.GetDepartamentos(id));
         }
 
         // POST: Departamentos/Delete/5

@@ -1,6 +1,7 @@
 ﻿@model CapaPresentacion3.Models.RegisterViewModel
 @{
     ViewBag.Title = "Crear Cuenta";
+    List<SelectListItem> departamentos = (List<SelectListItem>)ViewBag.items2;
 }
 
 <div class="d-flex justify-content-center p-5">
@@ -51,7 +52,7 @@
                         <div class="form-group col-md-6">
                             @Html.LabelFor(m => m.IdDepartamento, new { @class = "col-md-2 control-label p-0" })
                             <div class="col-md-12 p-0">
-                                @Html.TextBoxFor(m => m.IdDepartamento, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Departamento" })
+                                @Html.DropDownListFor(model => model.IdDepartamento, (IEnumerable<SelectListItem>)departamentos, "Departamento", new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -63,7 +64,7 @@
                     </div>
                     <div class="form-group mx-0 mt-2 mb-3">
                         <div class="col-12 p-0">
-                            <input type="submit" class="btn btn-outline-primary btn-block w-75 mx-auto" value="Register" />
+                            <input type="submit" class="btn btn-outline-primary btn-block w-75 mx-auto" value="Nuevo Usuario" />
                         </div>
                     </div>
                 }

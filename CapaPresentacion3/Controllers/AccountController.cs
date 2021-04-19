@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CapaPresentacion3.Models;
 using CapaEntidades;
+using CapaNegocio;
+using System.Collections.Generic;
 
 namespace CapaPresentacion3.Controllers
 {
@@ -135,11 +137,23 @@ namespace CapaPresentacion3.Controllers
             }
         }
 
+        DepartamentosNegocio departamentos = new DepartamentosNegocio();
         //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {            
+        {
+            List<SelectListItem> ListaDept = departamentos.MostrarDepartamentos().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.IdDepartamento.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.items2 = ListaDept;
             return View();
         }
 
@@ -150,6 +164,17 @@ namespace CapaPresentacion3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            List<SelectListItem> ListaDept = departamentos.MostrarDepartamentos().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.IdDepartamento.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.items2 = ListaDept;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Nombre = model.Nombre, Cargo = model.Cargo, IdDepartamento = model.IdDepartamento };

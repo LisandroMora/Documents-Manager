@@ -4,15 +4,11 @@
     ViewBag.Title = "Filtro";
 }
 
-<h2>Filtro</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2 class="text-center m-5">Resultados de la busqueda</h2>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdUsuario)
+            <span>Usuario</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -21,7 +17,7 @@
             @Html.DisplayNameFor(model => model.Correo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdDepartamento)
+            <span>Departamento</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Cargo)
@@ -45,11 +41,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cargo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

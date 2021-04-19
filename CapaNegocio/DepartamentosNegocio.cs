@@ -30,9 +30,9 @@ namespace CapaNegocio
         {
             datos.EliminarDepartamento(id);
         }
-        public static Departamentos GetDepartamentos(int ID)
+        public Departamentos GetDepartamentos(int ID)
         {
-            return DepartamentoDatos.GetDepartamentos(ID);
+            return datos.GetDepartamentos(ID);
         }
     }
 }

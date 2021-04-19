@@ -28,19 +28,10 @@ namespace CapaDatos
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Departamentos> Departamentos { get; set; }
         public virtual DbSet<EnvioDocumento> EnvioDocumento { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-    
-        public virtual ObjectResult<ReporteUsuarios_Result> ReporteUsuarios(string nombre)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteUsuarios_Result>("ReporteUsuarios", nombreParameter);
-        }
     
         public virtual ObjectResult<ReporteDepartamentos_Result> ReporteDepartamentos(string nombre)
         {
@@ -49,6 +40,19 @@ namespace CapaDatos
                 new ObjectParameter("Nombre", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteDepartamentos_Result>("ReporteDepartamentos", nombreParameter);
+        }
+    
+        public virtual ObjectResult<ReporteDocFecha_Result> ReporteDocFecha(string desde, string hasta)
+        {
+            var desdeParameter = desde != null ?
+                new ObjectParameter("desde", desde) :
+                new ObjectParameter("desde", typeof(string));
+    
+            var hastaParameter = hasta != null ?
+                new ObjectParameter("hasta", hasta) :
+                new ObjectParameter("hasta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteDocFecha_Result>("ReporteDocFecha", desdeParameter, hastaParameter);
         }
     
         public virtual ObjectResult<ReporteDocumentos_Result> ReporteDocumentos(string filtro, string consulta)
@@ -64,17 +68,13 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteDocumentos_Result>("ReporteDocumentos", filtroParameter, consultaParameter);
         }
     
-        public virtual ObjectResult<ReporteDocFecha_Result> ReporteDocFecha(string desde, string hasta)
+        public virtual ObjectResult<ReporteUsuarios_Result> ReporteUsuarios(string nombre)
         {
-            var desdeParameter = desde != null ?
-                new ObjectParameter("desde", desde) :
-                new ObjectParameter("desde", typeof(string));
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
     
-            var hastaParameter = hasta != null ?
-                new ObjectParameter("hasta", hasta) :
-                new ObjectParameter("hasta", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteDocFecha_Result>("ReporteDocFecha", desdeParameter, hastaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReporteUsuarios_Result>("ReporteUsuarios", nombreParameter);
         }
     }
 }

@@ -8,49 +8,51 @@
 
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) 
+<h2 class="text-center m-4">Generar Documento</h2>
+<hr />
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>EnvioDocumento</h4>
-        <hr />
+    <div class="d-flex">
+        <div class="form-horizontal col mt-5">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group row">
-            @Html.LabelFor(model => model.TipoDocumento, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.TipoDocumento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TipoDocumento, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                <span class="col-md-3">Tipo de Documento</span>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(model => model.TipoDocumento, new SelectList(new[] { "Memorandum", "Solicitud", "Comunicacion", "Reclamacion", "Otro" }, "Tipo de Documento"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TipoDocumento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <span class="col-md-3">Destino</span>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(model => model.IdDeptDestino, (IEnumerable<SelectListItem>)departamentos, "Destino", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdDeptDestino, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control mb-3", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group ml-5 mt-4">
+                <div class="col-md-12 p-0 ml-5">
+                    <input type="submit" value="Create" class="btn btn-outline-primary btn-block mr-0 w-75 ml-5"/>
+                </div>
             </div>
         </div>
-
-        <div class="form-group row">
-            @Html.LabelFor(model => model.IdDeptDestino, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.DropDownListFor(model => model.IdDeptDestino, (IEnumerable<SelectListItem>)departamentos, "Destino", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdDeptDestino, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group row">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @type = "date"} })
-                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
-            </div>
+        <div class="col m-0 p-0 w-50">
+            <img src="~/Images/Documentos.png" alt="..." class="img-fluid w-75 rounded-right ml-5" />
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "InicioDocumentos")
 </div>

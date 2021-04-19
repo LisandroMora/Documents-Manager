@@ -9,7 +9,7 @@ namespace CapaDatos
 {
     public class DocumentosDatos
     {
-        public ProyectoFinalP2Entities DB = new ProyectoFinalP2Entities();
+        ProyectoFinalP2Entities DB = new ProyectoFinalP2Entities();
 
         public void NuevoDocumento(EnvioDocumento documento)
         {
@@ -32,6 +32,16 @@ namespace CapaDatos
                 id = 0;
             }
             return id;
+        }
+        public void EliminarDocumento(int id)
+        {
+            var registro = DB.EnvioDocumento.Where(a => a.IdEnvio == id).FirstOrDefault();
+            DB.EnvioDocumento.Remove(registro);
+            DB.SaveChanges();
+        }
+        public EnvioDocumento GetDocumento(int ID)
+        {
+            return DB.EnvioDocumento.Where(a => a.IdEnvio == ID).FirstOrDefault();
         }
     }
 }

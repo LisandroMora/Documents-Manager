@@ -19,5 +19,6 @@ namespace CapaEntidades
         public int IdDepartamento { get; set; }
         public string Cargo { get; set; }
         public string IdCuenta { get; set; }
+        public string NombreDept { get; set; }
     }
 }
